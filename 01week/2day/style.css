@@ -1,0 +1,37 @@
+body {
+  color: #333;
+  margin: 0;
+  line-height: 28px;
+}
+img {
+  width: 100%;
+}
+article {
+  font-family: "Merriweather", serif;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 828px;
+}
+h1,
+h2 {
+  font-family: "Leto", sans-serif;
+  text-align: center;
+}
+h1 {
+  font-size: 32px;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+h2 {
+  color: #666;
+  font-size: 23px;
+  font-weight: normal;
+  margin-top: 0;
+}
+p {
+  font-size: 18px;
+}
+a {
+  color: #333;
+  font-weight: bold;
+}
