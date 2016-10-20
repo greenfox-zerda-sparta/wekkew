@@ -1,0 +1,21 @@
+body {
+  color: blue;
+  font-size: 30px;
+}
+
+section {
+  border: solid 20px green;
+  margin: 8px;
+  width: 246px;
+}
+
+div {
+  background-color: yellow;
+  border: solid 3px black;
+  height: 70px;
+  width: 240px;
+}
+
+p {
+  margin: 15px;
+}
