@@ -1,0 +1,23 @@
+body {
+  margin: 20px;
+}
+h1 {
+  color: blue;
+}
+h2 {
+  color: orange;
+}
+#outer {
+  list-style: square;
+  color: blue;
+}
+ol {
+  color: black;
+}
+#inner {
+  color: black;
+  list-style: disc;
+}
+#inner li:first-child {
+  color: red;
+}
