@@ -1,0 +1,14 @@
+body {
+  color: red;
+  font-size: 30px;
+}
+p {
+margin: 15px;
+}
+div {
+  height: 70px;
+  width: 240px;
+  border: solid 3px black;
+  background-color: yellow;
+  margin: 10px;
+}
