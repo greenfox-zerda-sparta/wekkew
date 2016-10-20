@@ -1,0 +1,14 @@
+body {
+  margin: 20px;
+}
+h1,
+h2 {
+  color: green;
+}
+em {
+  color: red;
+  font-style: normal;
+}
+i {
+  color: blue;
+}
