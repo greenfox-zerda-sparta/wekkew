@@ -1,67 +1,79 @@
 body {
-  font-family: 'Abril Fatface', cursive;
+  background-color: #eee;
   color: #222;
-  max-width: 1280px;
-  width: 100%;
+  font-family: 'Abril Fatface', cursive;
   margin-left: auto;
   margin-right: auto;
-  background-color: #eee;
+  max-width: 1280px;
+  width: 100%;
 }
+
 img {
   max-width: 1280px;
   width: 100%;
 }
+
 main,
 footer {
-  max-width: 800px;
   margin: 0 auto;
+  max-width: 800px;
   padding-bottom: 25px;
 }
+
 main {
   border-bottom: solid 4px black;
 }
+
 h1 {
   font-style: italic;
   font-weight: lighter;
-  text-align: center;
   margin: 50px 0;
+  text-align: center;
 }
+
 h1 sub {
   font-style: italic;
   font-variant: small-caps;
 }
+
 #news {
   border-bottom:dotted 1px grey;
 }
+
 #news dl,
 h3,
 p {
   margin-left: 25px;
 }
-#news i {
+
+.quote {
   font-size: 0.75em;
 }
-div {
+
+main img {
+  height: 100px;
   margin: 25px auto;
   max-width: 600px;
   width: 100%;
 }
-div img {
-  height: 100px;
-}
+
 footer {
   margin-top: 25px;
 }
+
 footer li {
   list-style: square;
 }
+
 footer a {
   color: inherit;
   text-decoration: none;
 }
+
 footer a:hover {
   font-style: italic;
 }
-footer i {
+
+footer strong {
   font-size: 0.5em;
 }
