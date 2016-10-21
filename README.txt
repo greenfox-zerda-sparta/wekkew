@@ -1,4 +1,7 @@
-this is my greenfox-zerda-sparta repository
+Kristóf Czétényi
 
-and dont mess with the monkey
-#sobadass
+'s greenfox-zerda-sparta repository 
+http://greenfoxacademy.com
+class started on 17-10-2016
+
+"Life begins at the end of your comfort zone"
