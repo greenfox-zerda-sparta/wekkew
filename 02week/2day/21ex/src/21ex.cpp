@@ -4,16 +4,13 @@ using namespace std;
 void alphabetSlicer(char beginner, char array[6]) {
 	char start = beginner;
 	for (int index = 0; index < 5; index++) {
-		if (start + index > 122) {
+		if (start + index > 121) {
 			start -= 26;
 		}
-		array[index] = start + index;
+		array[index] = start + 1 + index;
 	}
 	array[5] = '\0';
-
 }
-
-
 
 //Implement the above declared function to return the next 5 characters in the English alphabet
 //after the character 'beginner' in an array of characters.
@@ -27,7 +24,6 @@ int main(int argc, char** argv){
 	cout << arr << endl;
 	alphabetSlicer('w', arr);
 	cout << arr << endl;
-
 
 	return 0;
 }
