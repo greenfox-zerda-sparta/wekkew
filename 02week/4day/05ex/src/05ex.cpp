@@ -2,13 +2,13 @@
 
 using namespace std;
 
-string hasNegative(int* array, int length) {
+bool hasNegative(int* array, int length) {
   for (int i = 0; i < length; i++) {
     if (array[i] < 0) {
-      return "The array has negative number(s).";
+      return true;
     }
   }
-  return "The array does not have any negative number.";
+  return false;
 }
 
 int main() {
