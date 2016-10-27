@@ -16,6 +16,7 @@ int main() {
 
   // Write a function that decides if an array includes at least one negative number or not
   int length = sizeof(numbers)/sizeof(int);
-  cout << hasNegative(numbers, length);
+  hasNegative(numbers, length);
+
   return 0;
 }
