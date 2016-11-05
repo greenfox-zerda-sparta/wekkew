@@ -2,22 +2,22 @@
 using namespace std;
 
 struct Stack {
-  int size;
+  unsigned int size;
   double* array = NULL;
 };
 
 void printStack(Stack& stack) {
-  for (int i = 0; i < stack.size; i++) {
+  for (unsigned int i = 0; i < stack.size; i++) {
     cout << i+1 << " : " << stack.array[i] << endl;
   }
   cout << "stack.size: " << stack.size << endl;
 }
 
-Stack* stackCostruct(double* input, int size) {
+Stack* stackCostruct(double* input, unsigned int size) {
   Stack* newStack = new Stack;
   newStack->size = size;
   newStack->array = new double[size];
-  for (int i = 0; i < size; i++) {
+  for (unsigned int i = 0; i < size; i++) {
     newStack->array[i] = input[i];
   }
   return newStack;
@@ -25,7 +25,7 @@ Stack* stackCostruct(double* input, int size) {
 
 void pushStack(Stack& stack, double value) {
   double* newArray = new double[stack.size+1];
-  for (int i = 0; i < stack.size; i++) {
+  for (unsigned int i = 0; i < stack.size; i++) {
     newArray[i] = stack.array[i];
   }
   newArray[stack.size] = value;
@@ -35,9 +35,13 @@ void pushStack(Stack& stack, double value) {
 }
 
 double popStack(Stack& stack) {
+  if (stack.size == 0) {
+      cout << "GECINAGYHIBA" << endl;
+      return -1;
+    }
   double returnValue = stack.array[stack.size-1];
   double* newArray = new double[stack.size-1];
-  for (int i = 0; i < stack.size-1; i++) {
+  for (unsigned int i = 0; i < stack.size-1; i++) {
     newArray[i] = stack.array[i];
   }
   delete stack.array;
@@ -60,8 +64,8 @@ int main() {
   cout << popStack(*myFirstStack)<< "POP" << endl;
   cout << popStack(*myFirstStack)<< "POP" << endl;
   cout << popStack(*myFirstStack)<< "POP" << endl;
+  cout << popStack(*myFirstStack)<< "POP" << endl;
   cout << isEmptyStack(*myFirstStack) << endl;
   printStack(*myFirstStack);
-
 	return 0;
 }
