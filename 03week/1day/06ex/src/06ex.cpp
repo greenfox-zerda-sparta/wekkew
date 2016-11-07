@@ -30,10 +30,17 @@ int* filterGreaterThanFive(int* array, int size) {
       newArrayIndex++;
     }
   }
+  delete array;
+  array = NULL;
   return newArray;
 }
 
 int main() {
-  cout << filterGreaterThanFive(createArray(10), 10);
+  int* gt5 = filterGreaterThanFive(createArray(10), 10);
+  for (int i = 0; i < sizeof(gt5)/sizeof(int); i++) {
+    cout << i << " : " << gt5[i] << endl;
+  }
+  delete gt5;
+  gt5 = NULL;
   return 0;
 }
