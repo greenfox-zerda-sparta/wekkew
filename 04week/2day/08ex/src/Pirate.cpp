@@ -2,7 +2,7 @@
 #include <string>
 #include "Pirate.h"
 
-namespace std {
+using namespace std;
 
 Pirate::Pirate() {
   this->drinkCount = 0;
@@ -17,8 +17,7 @@ void Pirate::drinkRun() {
 void Pirate::howsGoingMate() {
   if (this->drinkCount >= 5) {
     cout << "Arrrrrr!" << endl;
-  }
-  else {
+  } else {
     cout << "Nope, nothin'" << endl;
   }
 }
@@ -27,4 +26,3 @@ Pirate::~Pirate() {
   // TODO Auto-generated destructor stub
 }
 
-} /* namespace std */

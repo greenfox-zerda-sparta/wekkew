@@ -10,11 +10,11 @@ Car::Car(string type, unsigned int km) {
 }
 
 void Car::runCar(unsigned int runKm) {
-  this->km += runKm;
+  km += runKm;
 }
 
 void Car::printKm() {
-  cout << this->km << endl;
+  cout << km << endl;
 }
 
 Car::~Car() {
