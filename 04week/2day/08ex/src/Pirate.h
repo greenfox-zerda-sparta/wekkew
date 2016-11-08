@@ -4,13 +4,13 @@
 namespace std {
 
 class Pirate {
-public:
-  Pirate();
-  void drinkRun();
-  void howsGoingMate();
-  virtual ~Pirate();
-private:
-  int drinkCount;
+  public:
+    Pirate();
+    void drinkRun();
+    void howsGoingMate();
+    virtual ~Pirate();
+  private:
+    int drinkCount;
 };
 
 } /* namespace std */
