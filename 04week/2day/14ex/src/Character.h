@@ -10,12 +10,12 @@
 
 namespace std {
 
-enum CharacterType {Human, Monster};
+enum CharacterType {HUMAN, ORC, DWARF, ELF};
 
 class Character {
 public:
-  Character(string name, CharacterType type, int health, int attack, int defense);
-  void attackTo(Character);
+  Character(string, CharacterType, int, int, int);
+  void attackTo(Character&);
   virtual ~Character();
 private:
   string name;
@@ -23,6 +23,7 @@ private:
   int health;
   int attack;
   int defense;
+  void fight(Character&, Character&);
 };
 
 } /* namespace std */
