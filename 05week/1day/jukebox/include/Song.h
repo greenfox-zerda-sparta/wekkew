@@ -14,7 +14,7 @@ class Song {
     unsigned int rateCounter;
   public:
     Song(string, string);
-    unsigned int getRating();
+    double getAverageRating();
     string getEverything();
     virtual ~Song();
   protected:
