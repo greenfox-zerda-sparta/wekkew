@@ -8,7 +8,7 @@
 class Rock : public Song {
   public:
     Rock(string, string);
-    void rate(unsigned int);
+    void setRating(unsigned int);
   virtual ~Rock();
 };
 

@@ -11,9 +11,8 @@ Song::Song(string title, string artist) {
   this->rateCounter = 0;
 }
 
-void Song::setRating(unsigned int rating) {
-  this->rating += rating;
-  this->rateCounter++;
+void Song::setGenre(string genre) {
+  this->genre = genre;
 }
 
 string Song::getEverything() {
@@ -21,10 +20,19 @@ string Song::getEverything() {
 }
 
 double Song::getAverageRating() {
-  return (this->rating/this->rateCounter);
+  return rating/(float)rateCounter;
 }
 
-Song::~Song()
-{
-  //dtor
+string Song::getTitle() {
+  return this->title;
+}
+string Song::getArtist() {
+  return this->artist;
+}
+string Song::getGenre() {
+  return this->genre;
+}
+
+Song::~Song() {
+
 }

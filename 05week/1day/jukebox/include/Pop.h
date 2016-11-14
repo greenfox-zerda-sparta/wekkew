@@ -8,7 +8,7 @@
 class Pop : public Song {
   public:
     Pop(string, string);
-    void rate(unsigned int);
+    void setRating(unsigned int);
   virtual ~Pop();
 };
 

@@ -8,7 +8,7 @@
 class Reggie : public Song {
   public:
     Reggie(string, string);
-    void rate(unsigned int);
+    void setRating(unsigned int);
   virtual ~Reggie();
 };
 
