@@ -4,7 +4,7 @@
 #include "Song.h"
 
 class Jukebox {
-  public: //just for demonstration purpose
+  private: //just for demonstration purpose
     Song** songs;
     unsigned int songCounter;
   public:
@@ -12,6 +12,9 @@ class Jukebox {
     void addToJB(Song& song);
     void rateSong(Song& song, unsigned int rate);
     double artistRate(string);
+    double genreRate(string);
+    string topRated();
+    string topRatedGenre();
     virtual ~Jukebox();
 };
 
