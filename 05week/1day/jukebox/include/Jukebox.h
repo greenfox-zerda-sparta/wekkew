@@ -4,12 +4,13 @@
 #include "Song.h"
 
 class Jukebox {
-  private:
+  public: //just for demonstration purpose
     Song** songs;
     unsigned int songCounter;
   public:
     Jukebox();
     void addToJB(Song& song);
+    void rateSong(Song& song, unsigned int rate);
     virtual ~Jukebox();
 };
 

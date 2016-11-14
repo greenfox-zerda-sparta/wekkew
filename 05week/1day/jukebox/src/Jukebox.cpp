@@ -16,6 +16,15 @@ void Jukebox::addToJB(Song& song) {
   this->songCounter++;
 }
 
+void Jukebox::rateSong(Song& song, unsigned int rate) {
+  for (int i = 0; i < songCounter; i++) {
+    if (songs[i] == &song) {
+      songs[i]->setRating(rate);
+      return;
+    }
+  }
+}
+
 Jukebox::~Jukebox() {
   delete[] this->songs;
 }
