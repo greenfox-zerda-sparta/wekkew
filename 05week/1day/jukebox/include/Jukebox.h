@@ -11,6 +11,7 @@ class Jukebox {
     Jukebox();
     void addToJB(Song& song);
     void rateSong(Song& song, unsigned int rate);
+    double artistRate(string);
     virtual ~Jukebox();
 };
 
