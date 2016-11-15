@@ -13,6 +13,4 @@ void Reggie::setRating(unsigned int rating) {
   this->rateCounter++;
 }
 
-Reggie::~Reggie() {
-  //dtor
-}
+Reggie::~Reggie() {}

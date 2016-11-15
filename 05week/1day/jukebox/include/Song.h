@@ -24,7 +24,6 @@ class Song {
     string getArtist();
     string getGenre();
     virtual ~Song();
-
 };
 
 #endif // SONG_H

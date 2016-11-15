@@ -4,7 +4,6 @@
 #include <Song.h>
 #include <string>
 
-
 class Pop : public Song {
   public:
     Pop(string, string);

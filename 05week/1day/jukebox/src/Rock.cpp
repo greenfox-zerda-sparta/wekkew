@@ -16,6 +16,4 @@ void Rock::setRating(unsigned int rating) {
   this->rateCounter++;
 }
 
-Rock::~Rock() {
-
-}
+Rock::~Rock() {}

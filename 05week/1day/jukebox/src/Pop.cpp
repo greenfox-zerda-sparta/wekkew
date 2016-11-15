@@ -14,6 +14,4 @@ void Pop::setRating(unsigned int rating) {
   this->rateCounter++;
 }
 
-Pop::~Pop() {
-
-}
+Pop::~Pop() {}

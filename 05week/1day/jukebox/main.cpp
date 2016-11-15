@@ -2,6 +2,7 @@
 #include "Pop.h"
 #include "Rock.h"
 #include "Reggie.h"
+#include "Rap.h"
 #include "Jukebox.h"
 
 using namespace std;
@@ -22,6 +23,10 @@ int main() {
   Rock chop("Chop Suey", "SOAD");
   chop.setRating(4);
 
+  Rap baby("Cuatro Babys", "Maluma");
+  baby.setRating(2);
+
+  juuk.addToJB(baby);
   juuk.addToJB(chop);
   juuk.addToJB(nwnc);
   juuk.addToJB(rumine);
@@ -32,6 +37,7 @@ int main() {
   juuk.rateSong(tnt, 5);
   cout << juuk.artistRate("adele") << endl;
   cout << juuk.genreRate("POP") << endl;
+  cout << juuk.genreRate("RAP") << endl;
   cout << juuk.topRated() << endl;
   cout << juuk.topRatedGenre() << endl;
 

@@ -4,7 +4,6 @@
 #include <Song.h>
 #include <iostream>
 
-
 class Reggie : public Song {
   public:
     Reggie(string, string);

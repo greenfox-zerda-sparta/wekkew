@@ -4,7 +4,7 @@
 #include "Song.h"
 
 class Jukebox {
-  private: //just for demonstration purpose
+  private:
     Song** songs;
     unsigned int songCounter;
   public:
