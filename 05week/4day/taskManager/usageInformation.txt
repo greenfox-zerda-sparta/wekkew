@@ -1,0 +1,8 @@
+CLI Todo application
+====================
+
+Command linde arguments:
+ -l  List all the task
+ -a  Add a new task
+ -r  Removes a task
+ -c Complete a task
