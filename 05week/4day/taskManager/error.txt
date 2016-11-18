@@ -1,0 +1,6 @@
+Serial is out of bound!
+No such file provided!
+Arguments must begins with \"-\" character!
+Enter a taskname, please!
+Enter a task serial number, please!
+Choose from the given possibilities, please!

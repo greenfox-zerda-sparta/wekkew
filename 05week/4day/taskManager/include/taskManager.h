@@ -1,6 +1,5 @@
 #ifndef TASKMANAGER_H
 #define TASKMANAGER_H
-#include "task.h"
 
 using namespace std;
 
@@ -8,10 +7,14 @@ class taskManager {
   public:
     taskManager();
 
-    void addTask(string);
-    void listAllTasks();
-    void removeTask(int);
-    void completeTask(int);
+    void addTask(string);           //-a
+    void listAllTasks();            //-l
+    void listUncompletedTasks();    //-lu
+    void removeTask(int);           //-r
+    void removeCompleteTasks();     //-rc
+    void removeAll();               //-ra
+    void completeTask(int);         //-c
+    void completeAllTasks();        //-ca
 
     virtual ~taskManager();
   protected:

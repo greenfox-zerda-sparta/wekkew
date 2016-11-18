@@ -8,9 +8,6 @@ class task {
   public:
     task(string taskName, int taskID);
     virtual ~task();
-
-  protected:
-
   public:
     int id;
     string name;

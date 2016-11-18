@@ -6,6 +6,16 @@
 
 using namespace std;
 
+void printError(int index) {
+  ifstream errorFile;
+  errorFile.open("error.txt");
+  string line;
+  for (int i = 0; i < index; i++) {
+    getline(errorFile, line);
+  }
+  cerr << line << endl;
+}
+
 int countTasks(string path) {
   ifstream myFile;
   myFile.open(path.c_str());
@@ -21,7 +31,7 @@ void printFile(string path) {
   ifstream myFile;
   myFile.open(path.c_str());
   if (!myFile.is_open()) {
-    cerr << "no such file" << endl;
+    printError(2);
     return;
   }
   string line;
@@ -38,27 +48,39 @@ void checkArguments(int argc, char** argv) {
   }
   string firstArgument = argv[1];
   if (firstArgument[0] != '-') {
-    cerr << "Arguments must begins with \"-\" character!" << endl;
+    printError(3);
     return;
   } else {
     taskManager greenfox;
     switch (firstArgument[1]) {
       case 'l': {
+        if (firstArgument[2] == 'u') {
+          greenfox.listUncompletedTasks();
+          break;
+        }
         greenfox.listAllTasks();
         break;
       }
       case 'a': {
         if (!(argc > 2)) {
-          cerr << "Enter a taskname please!" << endl;
-          return;
+          printError(4);
+          break;
         }
         string taskName = argv[2];
         greenfox.addTask(taskName);
         break;
       }
       case 'r': {
+        if (firstArgument[2] == 'c') {
+          greenfox.removeCompleteTasks();
+          break;
+        }
+        if (firstArgument[2] == 'a') {
+          greenfox.removeAll();
+          break;
+        }
         if (!(argc > 2)) {
-          cerr << "Enter a task serial number please!" << endl;
+          printError(5);
           return;
         }
         int serie = atoi(argv[2]);
@@ -66,8 +88,12 @@ void checkArguments(int argc, char** argv) {
         break;
       }
       case 'c': {
+        if (firstArgument[2] == 'a') {
+          greenfox.completeAllTasks();
+          break;
+        }
         if (!(argc > 2)) {
-          cerr << "Enter a task serial number please!" << endl;
+          printError(5);
           return;
         }
         int serie = atoi(argv[2]);
@@ -75,7 +101,7 @@ void checkArguments(int argc, char** argv) {
         break;
       }
       default:
-        cout << "Choose one from the given possibilities" << endl;
+        printError(6);
     }
   }
 }

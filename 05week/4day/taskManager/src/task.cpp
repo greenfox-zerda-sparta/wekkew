@@ -8,5 +8,4 @@ task::task(string taskName, int taskID) {
 }
 
 task::~task() {
-
 }

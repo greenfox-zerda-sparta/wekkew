@@ -1,8 +1,8 @@
 #include "taskManager.h"
 #include <fstream>
 #include <string>
-#include "task.h"
 #include "util.h"
+#include "task.h"
 #include <iostream>
 
 using namespace std;
@@ -47,6 +47,7 @@ void taskManager::addTask(string taskName) {
   delete[] taskVector;
   taskVector = newVector;
   taskCounter++;
+  listAllTasks();
 }
 
 void taskManager::listAllTasks() {
@@ -61,12 +62,27 @@ void taskManager::listAllTasks() {
   }
 }
 
+void taskManager::listUncompletedTasks() {
+  if (taskCounter == 0) {
+    printFile("nothingToDoHere.txt");
+    return;
+  }
+  for (int i = 0; i < taskCounter; i++) {
+    if (!taskVector[i]->complete) {
+      cout << this->taskVector[i]->id +1 << " - ";
+      this->taskVector[i]->complete ? cout <<"[x] " : cout << "[ ] ";
+      cout << this->taskVector[i]->name << endl;
+    }
+  }
+}
+
 void taskManager::removeTask(int serial) {
   if (serial > taskCounter) {
-    cout << "Serial is out of bound" << endl;
+    printError(1);
     return;
   }
   int index = serial - 1;
+
   task** newVector = new task*[taskCounter-1];
   for (int i = 0; i < index; i++) {
     newVector[i] = this->taskVector[i];
@@ -77,15 +93,38 @@ void taskManager::removeTask(int serial) {
   }
   delete[] this->taskVector;
   this->taskVector = newVector;
+  listAllTasks();
 }
 
 void taskManager::completeTask(int serial) {
   if (serial > taskCounter) {
-    cout << "Serial is out of bound" << endl;
+    printError(1);
     return;
   }
   int index = serial-1;
   this->taskVector[index]->complete = true;
+  listAllTasks();
+}
+
+void taskManager::completeAllTasks() {
+  for (int i = 0; i < taskCounter; i++) {
+    taskVector[i]->complete = true;
+  }
+}
+
+void taskManager::removeCompleteTasks() {
+  for (int i = 0; i < taskCounter; i++){
+    if (taskVector[i]->complete) {
+      int serial = i+1;
+      removeTask(serial);
+    }
+  }
+}
+
+void taskManager::removeAll() {
+  while (taskCounter > 0) {
+    this->removeTask(1);
+  }
 }
 
 taskManager::~taskManager() {

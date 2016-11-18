@@ -3,6 +3,8 @@
 
 using namespace std;
 
+void printError(int index);
+
 int countTasks(string path);
 
 void printFile(string path);
