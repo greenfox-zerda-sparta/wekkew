@@ -1,6 +1,7 @@
 #include "MyGame.h"
 
 MyGame::MyGame() {
+  srand(time(NULL));
   ifstream map;
   map.open("map1.txt");
   string line;
@@ -28,11 +29,15 @@ void MyGame::init(GameContext& context) {
   context.load_file("hero-right.bmp");
   context.load_file("hero-down.bmp");
   context.load_file("hero-left.bmp");
+  context.load_file("skeleton.bmp"); 
+  context.load_file("boss.bmp");
 }
 
 void MyGame::render(GameContext& context) {
   drawTable(context);
   moveHero(context);
+  createSkeletons(context);
+  
   context.render();
 }
 
@@ -49,50 +54,84 @@ void MyGame::drawTable(GameContext& context) {
   }
 }
 
-void MyGame::drawHero(GameContext & context, int x, int y, string imgName) {
+void MyGame::drawHero(GameContext& context, int x, int y, string imgName) {
   context.draw_sprite(imgName, x*72, y*72);
 }
 
-void MyGame::moveHero(GameContext & context) {
-  if (context.was_key_pressed(ARROW_UP)) {
-    if (--heroY < 0) {
-      heroY = 0;
+void MyGame::moveHero(GameContext& context) {
+  if (context.was_key_pressed(ARROW_UP)) { //heroY--
+    if (checkWalls(heroX, --heroY)) {
+      drawHero(context, heroX, heroY, heroView);
+    }
+    else {
+      ++heroY;
     }
     heroView = "hero-up.bmp";
     cout << "UP" << endl;
-    drawHero(context, heroX, heroY, heroView);
   }
-  else if (context.was_key_pressed(ARROW_RIGHT)) {
-    if (++heroX > 9) {
-      heroX = 9;
+  else if (context.was_key_pressed(ARROW_RIGHT)) { //heroX++
+    if (checkWalls(++heroX, heroY)) {
+      drawHero(context, heroX, heroY, heroView);
+    }
+    else {
+      --heroX;
     }
     heroView = "hero-right.bmp";
     cout << "RIGHT" << endl;
-    drawHero(context, heroX, heroY, heroView);
   }
-  else if (context.was_key_pressed(ARROW_DOWN)) {
-    if (++heroY > 9) {
-      heroY = 9;
+  else if (context.was_key_pressed(ARROW_DOWN)) { //heroY++
+    if (checkWalls(heroX, ++heroY)) {
+      drawHero(context, heroX, heroY, heroView);
+    }
+    else {
+      --heroY;
     }
     heroView = "hero-down.bmp";
     cout << "DOWN" << endl;
-    drawHero(context, heroX, heroY, heroView);
   }
-  else if (context.was_key_pressed(ARROW_LEFT)) {
-    if (--heroX < 0) {
-      heroX = 0;
+  else if (context.was_key_pressed(ARROW_LEFT)) { //heroX--
+    if (checkWalls(--heroX, heroY)) {
+      drawHero(context, heroX, heroY, heroView);
+    }
+    else {
+      ++heroX;
     }
     heroView = "hero-left.bmp";
     cout << "LEFT" << endl;
-    drawHero(context, heroX, heroY, heroView);
   }
   else {
     drawHero(context, heroX, heroY, heroView);
   }
 }
 
-void MyGame::checkWalls(int x, int y) {
+bool MyGame::checkWalls(int x, int y) {
+  if (x < 0 || y < 0 || x > 9 || y > 9) {
+    return false;
+  }
+  if (levelTable[y][x] == 0) {
+    return false;
+  }
+  return true;
+}
 
+void MyGame::drawSkeleton(GameContext& context, int x, int y) {
+  cout << "x: " << x << " y: " << y << endl;
+  context.draw_sprite("skeleton.bmp", x * 72, y * 72);
+}
+
+void MyGame::createSkeletons(GameContext& context) {
+  int i = 0;
+  while (skeletonCounter < 3) {
+    int x = rand() % 8 + 1;
+    int y = rand() % 8 + 1;
+    if (checkWalls(x, y)) {
+      drawSkeleton(context, x, y);
+      skeletonCounter++;
+    }
+    else {
+      createSkeletons(context);
+    }
+  }
 }
 
 MyGame::~MyGame() {
