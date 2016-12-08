@@ -2,9 +2,14 @@
 #define GAME_ENGINE_H
 
 #include "SDL.h"
-
 #include <map>
 #include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <time.h>
+#include <cstdlib>
+#include <ctime>
 
 #define ARROW_UP 0
 #define ARROW_RIGHT 1
