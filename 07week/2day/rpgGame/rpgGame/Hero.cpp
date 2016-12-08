@@ -1,6 +1,12 @@
 #include "Hero.h"
 
 Hero::Hero() {
+  this->HealthPoint = 20 + 3 * (rand() % 6 + 1);
+  this->DefensePoint = 2 * rand() % 6 + 1;
+  this->StrikePoint = 5 + rand() % 6 + 1;
+  this->posX = 0;
+  this->posY = 0;
+  cout << "Hero HP: " << HealthPoint << ", DP: " << DefensePoint << ", SP: " << StrikePoint << endl;
 }
 
 void Hero::drawHero(GameContext& context, int x, int y, string imgName) {
@@ -9,43 +15,43 @@ void Hero::drawHero(GameContext& context, int x, int y, string imgName) {
 
 void Hero::moveHero(GameContext& context, vector<vector<int>>& levelTable) {
   if (context.was_key_pressed(ARROW_UP)) { //heroY--
-    if (checkWalls(heroX, --heroY, levelTable)) {
-      drawHero(context, heroX, heroY, heroView);
+    if (checkWalls(posX, --posY, levelTable)) {
+      drawHero(context, posX, posY, heroView);
     }
     else {
-      ++heroY;
+      ++posY;
     }
     heroView = "hero-up.bmp";
   }
   else if (context.was_key_pressed(ARROW_RIGHT)) { //heroX++
-    if (checkWalls(++heroX, heroY, levelTable)) {
-      drawHero(context, heroX, heroY, heroView);
+    if (checkWalls(++posX, posY, levelTable)) {
+      drawHero(context, posX, posY, heroView);
     }
     else {
-      --heroX;
+      --posX;
     }
     heroView = "hero-right.bmp";
   }
   else if (context.was_key_pressed(ARROW_DOWN)) { //heroY++
-    if (checkWalls(heroX, ++heroY, levelTable)) {
-      drawHero(context, heroX, heroY, heroView);
+    if (checkWalls(posX, ++posY, levelTable)) {
+      drawHero(context, posX, posY, heroView);
     }
     else {
-      --heroY;
+      --posY;
     }
     heroView = "hero-down.bmp";
   }
   else if (context.was_key_pressed(ARROW_LEFT)) { //heroX--
-    if (checkWalls(--heroX, heroY, levelTable)) {
-      drawHero(context, heroX, heroY, heroView);
+    if (checkWalls(--posX, posY, levelTable)) {
+      drawHero(context, posX, posY, heroView);
     }
     else {
-      ++heroX;
+      ++posX;
     }
     heroView = "hero-left.bmp";
   }
   else {
-    drawHero(context, heroX, heroY, heroView);
+    drawHero(context, posX, posY, heroView);
   }
 }
 

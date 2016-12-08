@@ -1,10 +1,10 @@
 #pragma once
 
-#include "game-engine.h"
+#include "Character.h"
 
 using namespace std;
 
-class Hero {
+class Hero: public Character {
 public:
   Hero();
   void drawHero(GameContext&, int, int, string);
@@ -12,8 +12,6 @@ public:
   bool checkWalls(int, int, vector<vector<int>>&);
   virtual ~Hero();
 private:
-  int heroX = 0;
-  int heroY = 0;
   string heroView = "hero-down.bmp";
 };
 

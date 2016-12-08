@@ -1,16 +1,13 @@
 #pragma once
 
-#include "game-engine.h"
+#include "Character.h"
 
 using namespace std;
 
-class Skeleton {
+class Skeleton: public Character {
 public:
   Skeleton(vector<vector<int>>& victor);
   void drawSkeleton(GameContext&, int, int);
   virtual ~Skeleton();
-public:
-  int boneX = 0;
-  int boneY = 0;
 };
 

@@ -1,7 +1,6 @@
 #include "TableGenerator.h"
 
 TableGenerator::TableGenerator() {
-  srand(time(NULL));
   for (int i = 0; i < 10; i++) {
     vector<int> victor;
     generatedTable.push_back(victor);
