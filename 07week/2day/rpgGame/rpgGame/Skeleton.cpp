@@ -7,8 +7,8 @@ Skeleton::Skeleton(vector<vector<int>>& victor) {
     posX = rand() % 9 + 1;
     posY = rand() % 9 + 1;
   }
-  this->HealthPoint = 2 * (rand() % 6 + 1) + rand() % 6 + 1;
-  this->DefensePoint = 2 * (rand() % 6 + 1) + (rand() % 6 + 1) / 2;
+  this->HealthPoint = 2 * (rand() % 6 + 1);
+  this->DefensePoint = 2 * (rand() % 6 + 1);
   this->StrikePoint = rand() % 6 + 1;
   cout << "Skeleton HP: " << HealthPoint << ", DP: " << DefensePoint << ", SP: " << StrikePoint << endl;
 }

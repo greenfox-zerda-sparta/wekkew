@@ -37,6 +37,7 @@ void MyGame::render(GameContext& context) {
   for (unsigned int i = 0; i < thomb.size(); i++) {
     thomb[i].drawSkeleton(context, thomb[i].posX, thomb[i].posY);
   }
+  boss.drawBoss(context);
   hero.moveHero(context, levelTable);
   context.render();
 }

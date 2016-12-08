@@ -65,7 +65,8 @@ int TableGenerator::checkNeighbours(int x, int y) {
 void TableGenerator::fillRandom() {
   for (int i = 0; i < 10; i++) {
     if (i == 0) {
-      for (int j = 0; j < 10; j++) {
+      generatedTable[i][0] = 1;
+      for (int j = 1; j < 10; j++) {
         generatedTable[i][j] = rand() % 2;
       }
     } else if (i == 9) {

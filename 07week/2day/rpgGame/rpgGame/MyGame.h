@@ -3,6 +3,8 @@
 #include "TableGenerator.h"
 #include "Hero.h"
 #include "Skeleton.h"
+#include "Boss.h"
+
 
 using namespace std;
 
@@ -19,4 +21,5 @@ public:
 private:
   Hero hero;
   vector<Skeleton> thomb;
+  Boss boss;
 };
