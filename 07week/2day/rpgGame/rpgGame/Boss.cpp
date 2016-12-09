@@ -6,13 +6,9 @@ Boss::Boss() {
   this->HealthPoint = 2 * (rand() % 6 + 1) + rand() % 6 + 1;
   this->DefensePoint = 2 * (rand() % 6 + 1) + (rand() % 6 + 1) / 2;
   this->StrikePoint = rand() % 6 + 1;
+  this->picName = "boss.bmp";
   cout << "Boss HP: " << HealthPoint << ", DP: " << DefensePoint << ", SP: " << StrikePoint << endl;
 }
-
-void Boss::drawBoss(GameContext& context) {
-  context.draw_sprite("boss.bmp", this->posX * 72, this->posY * 72);
-}
-
 
 Boss::~Boss() {
 }

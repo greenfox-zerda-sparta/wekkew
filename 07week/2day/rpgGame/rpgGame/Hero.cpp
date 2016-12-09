@@ -6,63 +6,70 @@ Hero::Hero() {
   this->StrikePoint = 5 + rand() % 6 + 1;
   this->posX = 0;
   this->posY = 0;
+  this->picName = "hero-down.bmp";
   cout << "Hero HP: " << HealthPoint << ", DP: " << DefensePoint << ", SP: " << StrikePoint << endl;
-}
-
-void Hero::drawHero(GameContext& context, int x, int y, string imgName) {
-  context.draw_sprite(imgName, x * 72, y * 72);
 }
 
 void Hero::moveHero(GameContext& context, vector<vector<int>>& levelTable) {
   if (context.was_key_pressed(ARROW_UP)) { //heroY--
-    if (checkWalls(posX, --posY, levelTable)) {
-      drawHero(context, posX, posY, heroView);
-    }
-    else {
+    this->picName = "hero-up.bmp";
+    if (checkStep(posX, --posY, levelTable)) {
+      //drawCharacter(context);
+    } else {
       ++posY;
     }
-    heroView = "hero-up.bmp";
   }
   else if (context.was_key_pressed(ARROW_RIGHT)) { //heroX++
-    if (checkWalls(++posX, posY, levelTable)) {
-      drawHero(context, posX, posY, heroView);
-    }
-    else {
+    this->picName = "hero-right.bmp";
+    if (checkStep(++posX, posY, levelTable)) {
+      drawCharacter(context);
+    } else {
       --posX;
     }
-    heroView = "hero-right.bmp";
   }
   else if (context.was_key_pressed(ARROW_DOWN)) { //heroY++
-    if (checkWalls(posX, ++posY, levelTable)) {
-      drawHero(context, posX, posY, heroView);
-    }
-    else {
+    this->picName = "hero-down.bmp";
+    if (checkStep(posX, ++posY, levelTable)) {
+      drawCharacter(context);
+    } else {
       --posY;
     }
-    heroView = "hero-down.bmp";
   }
   else if (context.was_key_pressed(ARROW_LEFT)) { //heroX--
-    if (checkWalls(--posX, posY, levelTable)) {
-      drawHero(context, posX, posY, heroView);
-    }
-    else {
+    this->picName = "hero-left.bmp";
+    if (checkStep(--posX, posY, levelTable)) {
+      drawCharacter(context);
+    } else {
       ++posX;
     }
-    heroView = "hero-left.bmp";
   }
   else {
-    drawHero(context, posX, posY, heroView);
+    drawCharacter(context);
   }
 }
 
-bool Hero::checkWalls(int x, int y, vector<vector<int>>& levelTable) {
+void Hero::checkEnemy(vector<vector<int>>& victor) {
+  if (victor[posY][posX] == 2) {
+    cout << "ENEMY" << endl;
+  }
+  if (victor[posY][posX] == 3) {
+    cout << "BOSS" << endl;
+  }
+}
+
+bool Hero::checkStep(int x, int y, vector<vector<int>>& levelTable) {
   if (x < 0 || y < 0 || x > 9 || y > 9) {
     return false;
   }
   if (levelTable[y][x] == 0) {
     return false;
   }
+  checkEnemy(levelTable);
   return true;
+}
+
+void Hero::fight() {
+
 }
 
 Hero::~Hero() {

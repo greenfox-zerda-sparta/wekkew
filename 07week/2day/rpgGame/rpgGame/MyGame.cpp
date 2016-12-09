@@ -35,9 +35,8 @@ void MyGame::init(GameContext& context) {
 void MyGame::render(GameContext& context) {
   drawTable(context);
   for (unsigned int i = 0; i < thomb.size(); i++) {
-    thomb[i].drawSkeleton(context, thomb[i].posX, thomb[i].posY);
+    thomb[i].drawCharacter(context);
   }
-  boss.drawBoss(context);
   hero.moveHero(context, levelTable);
   context.render();
 }
@@ -65,6 +64,9 @@ void MyGame::fillThomb() {
     Skeleton boneBoss(levelTable);
     thomb.push_back(boneBoss);
   }
+  Boss Loki;
+  thomb.push_back(Loki);
+  this->levelTable[9][9] = 3;
 }
 
 MyGame::~MyGame() {

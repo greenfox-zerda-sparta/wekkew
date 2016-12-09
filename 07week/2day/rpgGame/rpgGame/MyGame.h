@@ -20,6 +20,5 @@ public:
   vector<vector<int>> levelTable;
 private:
   Hero hero;
-  vector<Skeleton> thomb;
-  Boss boss;
+  vector<Character> thomb;
 };

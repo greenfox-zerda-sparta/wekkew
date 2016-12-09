@@ -4,10 +4,9 @@
 
 using namespace std;
 
-class Boss : public Character {
+class Boss: public Character {
 public:
   Boss();
-  void drawBoss(GameContext&);
   ~Boss();
 };
 
