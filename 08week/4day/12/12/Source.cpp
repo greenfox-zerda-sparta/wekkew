@@ -7,23 +7,21 @@
 using namespace std;
 
 int addNumbers(vector<Box>& victor) {
-  int n = -1;
-  n++;
+  int n = victor.size() + 1;
+  n--;
   if (n > victor.size()) {
-    if (victor[n].type) {
+    if (victor[n].type == INTEGER) {
       return victor[n].integer + addNumbers(victor);
     } else {
       addNumbers(victor);
     }
   }
-  return 0;
 }
 
 int main() {
   // write a recursive function that can add numbers in
   // [1, 2, [3, 4], 1, [1, [2, 4]]]       
-  
- 
+   
   vector<Box> boxVector;
 
   Box box1;
