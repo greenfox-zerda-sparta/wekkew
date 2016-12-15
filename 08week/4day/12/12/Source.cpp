@@ -2,11 +2,20 @@
 #include <string>
 #include <cstdlib>
 #include <vector>
+#include "Box.h"
 
 using namespace std;
 
-int addNumbersInThreeDimensionalArray(int*** array) {
-  
+int addNumbers(vector<Box>& victor) {
+  int n = -1;
+  n++;
+  if (n > victor.size()) {
+    if (victor[n].type) {
+      return victor[n].integer + addNumbers(victor);
+    } else {
+      addNumbers(victor);
+    }
+  }
   return 0;
 }
 
@@ -14,15 +23,7 @@ int main() {
   // write a recursive function that can add numbers in
   // [1, 2, [3, 4], 1, [1, [2, 4]]]       
   
-  enum elemType {VECTOR, INTEGER};
-
-  class Box {
-  public:
-    elemType type;
-    vector<Box> doboz;
-    int integer;
-  };
-  
+ 
   vector<Box> boxVector;
 
   Box box1;
@@ -61,6 +62,8 @@ int main() {
   box311.doboz.push_back(box312);
   box311.doboz.push_back(box313);
   
+  cout << addNumbers(boxVector) << endl;
+
   system("pause");
   return 0;
 }
