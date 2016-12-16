@@ -2,7 +2,7 @@
 
 using namespace std;
 
-enum elemType { VECTOR, INTEGER };
+enum elemType { VECTOR, INTEGER, IFUCKINGDONTCARE };
 
 class Box {
 public:
