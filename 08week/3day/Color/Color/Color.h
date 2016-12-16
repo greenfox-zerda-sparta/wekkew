@@ -1,13 +1,19 @@
 #pragma once
+#include <string>
+
+using namespace std;
+
 class Color {
 public:
   Color();
   Color(unsigned char, unsigned char, unsigned char);
+  Color(string);
+  Color(Color& other);
   ~Color();
 private:
-  unsigned char _red_;
-  unsigned char _green_;
-  unsigned char _blue_;
+  unsigned char red_;
+  unsigned char green_;
+  unsigned char blue_;
 
 };
 

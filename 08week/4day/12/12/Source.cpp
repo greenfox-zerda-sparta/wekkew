@@ -9,6 +9,7 @@ using namespace std;
 int addNumbers(vector<Box>& victor) {
   int value = 0;
   if (victor.size() > 0) {
+
     if (victor[victor.size() - 1].type == INTEGER) {
       value = victor[victor.size() - 1].integer;
       victor.pop_back();
@@ -25,6 +26,7 @@ int addNumbers(vector<Box>& victor) {
       victor.pop_back();
       return value + addNumbers(victor);
     }
+  
   }
   return value;
 }

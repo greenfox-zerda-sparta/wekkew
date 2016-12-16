@@ -10,7 +10,7 @@ void drawLineXlong(SDL_Renderer* renderer, draw& d, int length) {
 }
 
 void drawSixAngles(SDL_Renderer* renderer,int startX, int startY, int size) {
-  if (size < 4) {
+  if (size <= 0) {
     return;
   }
   draw d;
@@ -29,7 +29,7 @@ void drawSixAngles(SDL_Renderer* renderer,int startX, int startY, int size) {
   int halfHeigth = sqrt(3)/2 * size;
   drawSixAngles(renderer, startX, startY, size / 2);
   drawSixAngles(renderer, startX, startY + halfHeigth , size / 2);
-  drawSixAngles(renderer, x - halfHeigth + size / 10 + 1.5 * size/size, y - halfHeigth / 2 , size / 2);
+  drawSixAngles(renderer, x - halfHeigth + size / 10 + 1, y - halfHeigth / 2 , size / 2);
 
 }
 
@@ -51,7 +51,9 @@ int main(int argc, char ** argv) {
     }
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); // rajzolás színe
     draw d;
-    drawSixAngles(renderer,200, 100, 200); 
+    drawSixAngles(renderer, 150, 50, 300); //startx starty size
+    //SDL_RenderPresent(renderer);
+
   }
   SDL_RenderPresent(renderer);
   SDL_DestroyRenderer(renderer);
