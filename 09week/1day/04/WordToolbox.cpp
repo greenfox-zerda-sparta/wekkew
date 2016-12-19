@@ -44,10 +44,24 @@ bool WordToolbox::checkAnagram(string stringToCheck) {
   return true;
 }
 
-int WordToolbox::countHowMany(char charToFind) {
+bool WordToolbox::checkWithCount(string stringToCheck) {
+  string stringWithoutSpaces = removeSpaces(stringToCheck);
+  string toCheck = getString();
+  if (stringWithoutSpaces.length() != toCheck.length()) {
+    return false;
+  }
+  for (int i = 0; i < toCheck.length(); i++) {
+    if (countHowMany(toCheck[i], toCheck) != countHowMany(toCheck[i], stringWithoutSpaces)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+int WordToolbox::countHowMany(char charToFind, string stringInFind) {
   int counter = 0;
-  for (int i = 0; i < stringHeld.length(); i++) {
-    if (stringHeld[i] == charToFind) {
+  for (int i = 0; i < stringInFind.length(); i++) {
+    if (stringInFind[i] == charToFind) {
       counter++;
     }
   }
