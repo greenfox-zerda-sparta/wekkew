@@ -16,6 +16,7 @@ public:
   Keyboard();
   void fillVector();
   void loadAnDrawAllFiles();
+  void loadAllFiles();
   void loadAnDrawAllFiles(int);
   void loadFile(string);
   void drawSprite(string, int, int);

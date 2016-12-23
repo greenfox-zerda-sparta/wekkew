@@ -27,6 +27,26 @@ void Keyboard::loadAnDrawAllFiles() {
   render();
 }
 
+void Keyboard::loadAllFiles() {
+  string start = "./keyboard/";
+  string pushStart = "./keyboard/push";
+  string end = ".bmp";
+  for (int i = 0; i < fileNames.size(); i++) {
+    string path = "";
+    path += start;
+    path += fileNames[i];
+    path += end;
+    loadFile(path);
+  }
+  for (int i = 0; i < fileNames.size(); i++) {
+    string path = "";
+    path += pushStart;
+    path += fileNames[i];
+    path += end;
+    loadFile(path);
+  }
+}
+
 void Keyboard::loadAnDrawAllFiles(int number) {
   string start = "./keyboard/";
   string pushStart = "./keyboard/push";
@@ -44,7 +64,7 @@ void Keyboard::loadAnDrawAllFiles(int number) {
     drawSprite(path, i * 100, 0);
   }
   render();
-  Sleep(100);
+  Sleep(200);
   loadAnDrawAllFiles();
 }
 

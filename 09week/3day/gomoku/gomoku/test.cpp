@@ -66,4 +66,23 @@ TEST_CASE("check method check 5 in a row backwards") {
   REQUIRE(game.win == true);
 }
 
+TEST_CASE("check method check 5 in a row forward") {
+  Gomoku game;
+  game.step(0, 4);  //1
+  game.step(1, 3);  //2
+  CHECK(game.board[0][0] == 1);
+  CHECK(game.board[1][0] == 2);
+  game.step(0, 3);  //3
+  game.step(1, 2);  //4
+  CHECK(game.board[1][1] == 2);
+  game.step(0, 2);  //5
+  CHECK(game.board[0][2] == 1);
+  game.step(1, 1);  //6
+  game.step(0, 1);  //7
+  game.step(1, 0);  //8
+  game.step(0, 0);  //9
+  REQUIRE(game.startCheck == true);
+  REQUIRE(game.win == true);
+}
+
 #endif
