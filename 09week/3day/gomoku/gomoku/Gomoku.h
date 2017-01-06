@@ -2,23 +2,30 @@
 
 #include <vector>
 
-using namespace std;
+using std::vector;
 
 class Gomoku {
-public:
-  bool startCheck;
-  bool win;
+private:  
+  int requiredElements = 4;
   unsigned int stepCounter;
   const unsigned int size = 19;
   const unsigned int scale = 5;
+public:
   vector<vector<unsigned int>> board;
+  bool victory;
 public:
   Gomoku();
   ~Gomoku();
-  bool check(unsigned int, unsigned int);
-  void step(unsigned int, unsigned int);
+  void step(int, int);
 private:
-  void changElement(unsigned int, unsigned int, unsigned int);
-  bool isPlaceFreeToModify(unsigned int, unsigned int);
   void fillVector();
+  void changElement(int, int, unsigned int);
+  bool isPlaceFreeToModify(int, int);
+  bool check(int, int);
+  bool horizontalCheck(int, int);
+  bool verticalCheck(int, int);
+  bool diagonalNWCheck(int, int);
+  bool diagonalNECheck(int, int);
+  void win(int, int);
+  void printBoard();
 };

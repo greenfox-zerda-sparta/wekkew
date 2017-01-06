@@ -1,4 +1,4 @@
-#define TEST
+//#define TEST
 #ifdef TEST
 
 #define CATCH_CONFIG_MAIN
@@ -45,7 +45,7 @@ TEST_CASE("after the 9th step -> checking method") {
   REQUIRE(game.startCheck == true); */
 }
 
-TEST_CASE("check method check 5 in a row backwards") {
+TEST_CASE("check method checks 5 in a row backwards") {
   Gomoku game;
   game.step(0, 0);  //1
   game.step(1, 0);  //2
@@ -65,7 +65,7 @@ TEST_CASE("check method check 5 in a row backwards") {
   REQUIRE(game.startCheck == true);
   REQUIRE(game.win == true);
 }
-
+/*
 TEST_CASE("check method check 5 in a row forward") {
   Gomoku game;
   game.step(0, 4);  //1
@@ -84,5 +84,5 @@ TEST_CASE("check method check 5 in a row forward") {
   REQUIRE(game.startCheck == true);
   REQUIRE(game.win == true);
 }
-
+*/
 #endif

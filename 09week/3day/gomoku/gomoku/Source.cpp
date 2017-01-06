@@ -1,13 +1,11 @@
-#include "MyGame.h"
-#include <cstdlib>
+#include "Controller.h"
+
 using namespace std;
 
 int main(int argc, char** argv) {
-
-  MyGame game = MyGame();
-  GameEngine engine(&game, 200, 200);
+  Controller game;
+  GameEngine engine(&game, 760, 760);
   engine.run();
-
-  system("pause");
+  
   return 0;
 }
