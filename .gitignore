@@ -132,6 +132,16 @@ publish/
 *.pubxml
 *.publishproj
 
+# extra additional used VS and other files
+*.dll
+*.filters
+*.sln
+*.db
+*.opendb
+*.lib
+*.EAP
+*.pptx
+
 # NuGet Packages Directory
 ## TODO: If you have NuGet Package Restore enabled, uncomment the next line
 #packages/

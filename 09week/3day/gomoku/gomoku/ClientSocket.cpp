@@ -67,10 +67,6 @@ char* ClientSocket::checkForIncomingMessages() {
 }
 
 void ClientSocket::sendCoordinates(int yCord, int xCord) {
-  /*
-  string util = toString(yCord/40) + "," + toString(xCord/40);
-  const char* message = util.c_str();
-  */
   char msg[2];
   msg[0] = (char)yCord / 40;
   msg[1] = (char)xCord / 40;

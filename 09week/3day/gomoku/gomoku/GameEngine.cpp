@@ -30,7 +30,6 @@ void GameEngine::run() {
         SDL_GetMouseState(&x, &y);
         game->makeStep(x, y);
         cliens->cs->sendCoordinates(x, y);
-        cliens->cs->checkForIncomingMessages();
         if (cliens->cs->gotMessage) {
           cout << "here" << endl;
           cliens->waitForTheFuckingMiracle();
