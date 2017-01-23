@@ -14,6 +14,8 @@ void drawer(SDL_Window*);
 double angleX;
 double angleZ;
 
+bool igaz = false;
+
 int main(int argc, char *argv[]) {
 
   SDL_Init(SDL_INIT_VIDEO);
