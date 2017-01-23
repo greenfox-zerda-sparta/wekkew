@@ -27,9 +27,9 @@ class LTexture {
     ~LTexture(); //Deallocates memory		
 		bool loadFromFile(std::string); //Loads image at specified path /*path*/
     void free(); //Deallocates texture
-    void setColor(Uint8 red, Uint8 green, Uint8 blue); //Set color modulation
-    void setBlendMode(SDL_BlendMode blending); //Set blending
-    void setAlpha(Uint8 alpha); //Set alpha modulation
+    void setColor(Uint8, Uint8, Uint8); //Set color modulation
+    void setBlendMode(SDL_BlendMode); //Set blending
+    void setAlpha(Uint8); //Set alpha modulation
     void render(int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE); //Renders texture at given point
     int getWidth(); //Gets image dimensions
     int getHeight(); //Gets image dimensions
@@ -57,26 +57,14 @@ class LButton {
 		LButtonSprite mCurrentSprite; //Currently used global sprite
 };
 
-
 bool init(); //Starts up SDL and creates window
-
-
 bool loadMedia(); //Loads media
-
-
 void close(); //Frees media and shuts down SDL
 
-
 SDL_Window* gWindow = NULL; //The window we'll be rendering to
-
-
 SDL_Renderer* gRenderer = NULL; //The window renderer
-
-
 SDL_Rect gSpriteClips[ BUTTON_SPRITE_TOTAL ]; //Mouse button sprites
 LTexture gButtonSpriteSheetTexture; //Mouse button sprites
-
-
 LButton gButtons[ TOTAL_BUTTONS ]; //Buttons objects
 
 LTexture::LTexture() {
@@ -398,7 +386,7 @@ bool loadMedia() {
   bool success = true;
 
   //Load sprites
-  if (!gButtonSpriteSheetTexture.loadFromFile("17_mouse_events/button.png"))
+  if (!gButtonSpriteSheetTexture.loadFromFile("button.png"))
   {
     printf("Failed to load button sprite texture!\n");
     success = false;
