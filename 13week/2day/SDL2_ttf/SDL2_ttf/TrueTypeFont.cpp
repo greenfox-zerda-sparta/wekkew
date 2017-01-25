@@ -9,7 +9,7 @@ TrueTypeFont::TrueTypeFont(std::string fontName, SDL_Renderer* renderer) {
   TTF_Init(); // the original sdl_ttf initialisation
   setFont(); 
   setTextColor();
-  setBackgroundColor();
+  //setBackgroundColor();
   createTextTexture();
 }
 
@@ -39,10 +39,6 @@ void TrueTypeFont::createTextTexture() {
 
 void TrueTypeFont::setTextColor() {
   textColor = { 255, 255, 255, 155 }; //snow white
-}
-
-void TrueTypeFont::setBackgroundColor() {
-  backgroundColor = { 255, 0, 0, 155 }; // nigga's blood
 }
 
 SDL_Texture* TrueTypeFont::SurfaceToTexture(SDL_Surface* surf) {
@@ -80,10 +76,6 @@ void TrueTypeFont::setTextColor(Uint8 newRed, Uint8 newGreen, Uint8 newBlue, Uin
   createTextTexture();
 }
 
-void TrueTypeFont::setBackgroundColor(Uint8 newRed, Uint8 newGreen, Uint8 newBlue, Uint8 newAlpha) {
- this->backgroundColor = { newRed, newGreen, newBlue, newAlpha };
-}
-
 void TrueTypeFont::render() {
   SDL_RenderClear(renderer);
   SDL_RenderCopy(renderer, solidTexture, NULL, &solidRect);
@@ -93,3 +85,10 @@ void TrueTypeFont::render() {
 TrueTypeFont::~TrueTypeFont() {
   TTF_CloseFont(font);
 }
+
+/*void TrueTypeFont::setBackgroundColor() {
+  backgroundColor = { 255, 0, 0, 155 }; // nigga's blood
+}
+void TrueTypeFont::setBackgroundColor(Uint8 newRed, Uint8 newGreen, Uint8 newBlue, Uint8 newAlpha) {
+  this->backgroundColor = { newRed, newGreen, newBlue, newAlpha };
+}*/

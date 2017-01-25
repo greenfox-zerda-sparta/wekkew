@@ -12,11 +12,8 @@ int main(int argc, char* argv[]) {
 
   TrueTypeFont* apple = new TrueTypeFont("Arial.ttf", renderer);
   apple->setCordinates(0, 640);
-  std::cout << apple->getText() << std::endl;
-  apple->setText("Long long time ago, there was a vulcano...");
-  std::cout << apple->getText() << std::endl;
   apple->setTextColor(255, 255, 0, 0);
-  apple->setBackgroundColor(255, 0, 0, 255);
+  //apple->setBackgroundColor(255, 0, 0, 255);
   SDL_Event event;
   bool running = true;
   while (running) {
