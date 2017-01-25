@@ -16,14 +16,15 @@ const int TOTAL_BUTTONS = 4;
 
 class LButton {
 public:
-  LButton(); //NEEDS enums
+  LButton();
   void setPosition(int, int);
   void handleEvent(SDL_Event*);
   void render(LTexture*, SDL_Rect*);
-
+  ~LButton();
 private:
   SDL_Point mPosition;
   LButtonSprite mCurrentSprite;
   LTexture* texture;
   SDL_Rect* spriteRect;
+  bool isInside(int, int);
 };

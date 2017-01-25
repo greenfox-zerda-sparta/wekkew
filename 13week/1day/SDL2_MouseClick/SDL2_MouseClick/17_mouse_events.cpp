@@ -1,13 +1,14 @@
 #include "LButton.h"
 
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 400;
+const int SCREEN_HEIGHT = 300;
+const char* PICTURE_PATH = "C:\\Users\\wekke\\Documents\\Greenfox\\wekkew\\13week\\1day\\SDL2_MouseClick\\SDL2_MouseClick\\button.png";
 
 SDL_Window* gWindow = NULL;
 SDL_Renderer* gRenderer = NULL;
 LTexture gButtonSpriteSheetTexture;
 SDL_Rect gSpriteClips[BUTTON_SPRITE_TOTAL];
-LButton gButtons[BUTTON_SPRITE_TOTAL];
+LButton gButtons;
 
 void Init();
 void LoadMedia();
@@ -36,18 +37,20 @@ int main(int argc, char* argv[]) {
         case SDLK_SPACE:
           std::cout << "SPACE bitches" << std::endl;
           break;
+        case SDLK_CAPSLOCK:
+          std::cout << "CapsLock yo morons" << std::endl;
+          break;
         }
       }
-      for (int i = 0; i < BUTTON_SPRITE_TOTAL; i++) {
-        gButtons[i].handleEvent(&event);
-      }
-    }
+      
+      gButtons.handleEvent(&event);
+      
+    } // end of waiting for SDL_PollEvent(&event);  
 
     SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderClear(gRenderer);
-    for (int i = 0; i < BUTTON_SPRITE_TOTAL; i++) {
-      gButtons[i].render(&gButtonSpriteSheetTexture, gSpriteClips);
-    }
+    gButtons.render(&gButtonSpriteSheetTexture, gSpriteClips);
+    
     SDL_RenderPresent(gRenderer);
   }
   close();
@@ -56,29 +59,23 @@ int main(int argc, char* argv[]) {
 
 void Init() {
   SDL_Init(SDL_INIT_VIDEO);
-  SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
   gWindow = SDL_CreateWindow("SDL Mouse Bindzsi", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
   gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-  SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
   IMG_Init(IMG_INIT_PNG);
 }
 
 void LoadMedia() {
-  gButtonSpriteSheetTexture.loadFromFile("C:\\Users\\wekke\\Documents\\Greenfox\\wekkew\\13week\\1day\\SDL2_MouseClick\\SDL2_MouseClick\\button.png", gRenderer);
+  gButtonSpriteSheetTexture.loadFromFile(PICTURE_PATH, gRenderer);
   for (int i = 0; i < BUTTON_SPRITE_TOTAL; i++) {
     gSpriteClips[i].x = 0;
     gSpriteClips[i].y = i * BUTTON_HEIGHT;
     gSpriteClips[i].w = BUTTON_WIDTH;
     gSpriteClips[i].h = BUTTON_HEIGHT;
   }
-  gButtons[0].setPosition(0, 0);
-  gButtons[1].setPosition(SCREEN_WIDTH - BUTTON_WIDTH, 0);
-  gButtons[2].setPosition(0, SCREEN_HEIGHT - BUTTON_HEIGHT);
-  gButtons[3].setPosition(SCREEN_WIDTH - BUTTON_WIDTH, SCREEN_HEIGHT - BUTTON_HEIGHT);
+  gButtons.setPosition(0, 0);
 }
 
 void close() {
-  gButtonSpriteSheetTexture.free();
   SDL_DestroyRenderer(gRenderer);
   SDL_DestroyWindow(gWindow);
   gWindow = NULL;

@@ -1,6 +1,5 @@
 #include "LButton.h"
 
-
 LButton::LButton() {
   mPosition.x = 0;
   mPosition.y = 0;
@@ -12,25 +11,28 @@ void LButton::setPosition(int x, int y) {
   mPosition.y = y;
 }
 
+bool LButton::isInside(int x, int y) {
+  bool inside = true;
+  if (x < mPosition.x) {
+    inside = false;
+  }
+  else if (x > mPosition.x + BUTTON_WIDTH) {
+    inside = false;
+  }
+  else if (y < mPosition.y) {
+    inside = false;
+  }
+  else if (y > mPosition.y + BUTTON_HEIGHT) {
+    inside = false;
+  }
+  return inside;
+}
+
 void LButton::handleEvent(SDL_Event* event) {
   if (event->type == SDL_MOUSEMOTION || event->type == SDL_MOUSEBUTTONDOWN || event->type == SDL_MOUSEBUTTONUP) {
     int x, y;
     SDL_GetMouseState(&x, &y);
-    bool inside = true;
-    if (x < mPosition.x) {
-      inside = false;
-    }
-    else if (x > mPosition.x + BUTTON_WIDTH) {
-      inside = false;
-    }
-    else if (y < mPosition.y) {
-      inside = false;
-    }
-    else if (y > mPosition.y + BUTTON_HEIGHT) {
-      inside = false;
-    }
-
-    if (!inside) {
+    if (!isInside(x, y)) {
       mCurrentSprite = BUTTON_SPRITE_MOUSE_OUT;
     }
     else {
@@ -49,8 +51,11 @@ void LButton::handleEvent(SDL_Event* event) {
   }
 }
 
-void LButton::render(LTexture* texture, SDL_Rect* rect) {
+void LButton::render(LTexture* texture, SDL_Rect* rectangle) {
   this->texture = texture;
-  this->spriteRect = rect;
+  this->spriteRect = rectangle;
   texture->render(mPosition.x, mPosition.y, &spriteRect[mCurrentSprite]);
+}
+
+LButton::~LButton() {
 }
