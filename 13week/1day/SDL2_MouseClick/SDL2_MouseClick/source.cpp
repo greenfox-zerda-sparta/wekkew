@@ -4,7 +4,6 @@
 #include <SDL_ttf.h>
 #include <string>
 
-
 bool isInside(int x, int y, SDL_Rect* rect) {
   if (x < rect->x) {
     return false;
@@ -20,8 +19,6 @@ bool isInside(int x, int y, SDL_Rect* rect) {
   }
   return true;
 }
-
-
 
 int main(int argc, char* argv[]) {
   SDL_Init(SDL_INIT_EVERYTHING);
@@ -39,7 +36,6 @@ int main(int argc, char* argv[]) {
   bool running = true;
 
   while (running) {
-
     while (SDL_PollEvent(&event)) {
       int x, y;
       switch (event.type) {
@@ -73,15 +69,12 @@ int main(int argc, char* argv[]) {
           std::cout << "mouse button up from \"selected\" area" << std::endl;
         }
         break;
-      }
-    }
+      } //endof switch case
+    } // endof while sdl_pollevent
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, texture,NULL, &button);
     SDL_RenderPresent(renderer);
-
-
-  }
-  
+  } // endof while running  
   IMG_Quit();
   SDL_DestroyTexture(texture);
   SDL_DestroyRenderer(renderer);
