@@ -1,19 +1,19 @@
 #include "TrueTypeFont.h"
 #include <iostream>
 
-void InitSDL();
-
-
-
 int main(int argc, char* argv[]) {
+  std::string my_text;
+  std::cin >> my_text;
+
   SDL_Init(SDL_INIT_EVERYTHING);
   SDL_Window* window = SDL_CreateWindow("TextToFont", 0, 30, 640*2, 480*2, 0);
   SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
   TrueTypeFont* apple = new TrueTypeFont("Arial.ttf", renderer);
+
+  apple->setText(my_text);
   apple->setCordinates(0, 640);
   apple->setTextColor(255, 255, 0, 0);
-  //apple->setBackgroundColor(255, 0, 0, 255);
   SDL_Event event;
   bool running = true;
   while (running) {
@@ -49,8 +49,4 @@ int main(int argc, char* argv[]) {
   }
 
   return 0;
-} //endof main
-
-void InitSDL() {
-  
 }

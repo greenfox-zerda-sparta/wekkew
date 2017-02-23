@@ -9,11 +9,10 @@ private:
   int rectXCord = 0;
   int rectYCord = 0;
   std::string fontName;
-  std::string text = "Hello, World!";
+  std::string text = "Hello, evosoft!";
   int fontSize = 40;
   TTF_Font* font = NULL;
   SDL_Color textColor;
-  //SDL_Color backgroundColor;
   SDL_Texture* solidTexture = NULL;
   SDL_Renderer* renderer = NULL;
   SDL_Rect solidRect;
@@ -28,12 +27,10 @@ public:
   void setCordinates(int, int);
   void setFontType(std::string);
   void setTextColor(Uint8, Uint8, Uint8, Uint8);
-  //void setBackgroundColor(Uint8, Uint8, Uint8, Uint8);
   ~TrueTypeFont();
 private:
   void setFont();
   void setTextColor();
-  //void setBackgroundColor();
   void createTextTexture();
   SDL_Texture* SurfaceToTexture(SDL_Surface*);
 };
