@@ -108,12 +108,13 @@ void Game_handler::network_connection() {
 }
 
 void Game_handler::network_update_map() {
-  std::mutex mtx;
-  mtx.lock();
-  
+  //std::mutex mtx;
+  //mtx.lock();
+  //std::cout << "starting network_start_method ///////////////////////////////////////////////////////////////////////////////////////////////////////" << std::endl;
+  network->start_listening();
   enemy_village = my_village;//network->communicate->receive();
   std::cout << "update map method" << std::endl;
-  mtx.unlock();
+  //mtx.unlock();
 }
 
 Game_handler::Game_handler() {
@@ -146,11 +147,12 @@ void Game_handler::initialization() {
 
 void Game_handler::run() {  
   network = new Broadcast("255.255.255.255", 1234, 1233);
-  std::thread network_receive(&Game_handler::network_update_map, &Game_handler());
-  network_receive.detach();
+  this->network_update_map();
+  //std::thread network_receive(&Game_handler::network_update_map, &Game_handler());
+  //network_receive.detach();
 
   bool running = true;
-
+  network->start_listening();
   while (running) {    
     ui->input_handler(running, this->selected_coordinates);
 
@@ -166,9 +168,9 @@ void Game_handler::run() {
     window->render_present();
   }
 
-  if (network_receive.joinable()) {
+  /*if (network_receive.joinable()) {
     network_receive.join();
-  }
+  }*/
 
 }
 

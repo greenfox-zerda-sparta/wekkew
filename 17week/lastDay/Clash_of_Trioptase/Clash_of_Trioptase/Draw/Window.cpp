@@ -2,7 +2,7 @@
 
 Window::Window(int width, int height) : WINDOW_HEIGHT(height), WINDOW_WIDTH(width) {
   SDL_Init(SDL_INIT_EVERYTHING);
-  window = SDL_CreateWindow("title", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
+  window = SDL_CreateWindow("Clash of Trioptase", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
   renderer = SDL_CreateRenderer(window, -1, 0);
 }
 

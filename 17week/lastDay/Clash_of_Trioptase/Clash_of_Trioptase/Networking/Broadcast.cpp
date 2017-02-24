@@ -8,7 +8,7 @@ Broadcast::Broadcast(const string& ip, int32_t remote, int32_t local): ip_addres
   server_mode = false;
   set_server();
   set_client();
-  start_listening();
+  //start_listening();
 }
 
 void Broadcast::start_listening() {
@@ -25,8 +25,8 @@ void Broadcast::start_listening() {
 void Broadcast::send() {
   string msg = std::to_string(my_ip.host);
   memcpy(packet->data, msg.c_str(), msg.length());
-  packet->len = msg.length();
-  std::cout << "send packet's data" << packet->data << std::endl;
+  packet->len = msg.length() + 1;
+  std::cout << "send packet's data: " << packet->data << std::endl;
   SDLNet_UDP_Send(outSocket, -1, packet);
 }
 
